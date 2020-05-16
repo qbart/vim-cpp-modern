@@ -441,3 +441,34 @@ if get(g:, 'cpp_simple_highlight', 0)
     hi link cppStorageClass Statement
     hi link cppSTLexception Typedef
 endif
+
+" ----- custom -----
+syntax keyword cppStatement auto constexpr const namespace
+syntax keyword cppType u8 u16 u32 u64 i8 i16 i32 i64
+
+" Ternary
+syn match cppTernary "[?:]"
+hi def link cppTernary Conditional
+
+" Brackets
+syn match cppParens /[(){}]/
+hi def link cppParens Parens
+
+" Operators
+syn match cppOperator "\(<<\|>>\|[-+*/%&^|<>!=]\)="
+syn match cppOperator "<<\|>>\|&&\|||\|++\|--\|->\|::"
+syn match cppOperator "[.!~*&%<>^|=,+-]"
+syn match cppOperator "/[^/*=]"me=e-1
+syn match cppOperator "/$"
+syn match cppOperator "&&\|||"
+syn match cppOperator "[][]"
+
+" Delimiters
+syn match cppSemicolon ";"
+hi def link cppSemicolon Semicolon
+
+" syn match cDelimiter "[();\\]"
+" hi def link cDelimiter Delimiter
+" foldmethod=syntax fix, courtesy of Ivan Freitas
+" syn match cBraces display "[{}]"
+" hi def link cBraces Delimiter
